@@ -1,20 +1,22 @@
-    const addBtn = document.getElementById('add')
-    const btnText = addBtn.innerText;
+    const addBtn = document.getElementById('add') 
+    const btnText = addBtn.innerText; 
 
-    const searchBtn = document.getElementById('search')
-    const recordsDisplay = document.getElementById('records')
-    let usersArray = [];
-    let edit_id = null;
+    const searchBtn = document.getElementById('search') 
+    const recordsDisplay = document.getElementById('records') 
+    let usersArray = []; 
+    let edit_id = null; 
 
-// here we get our save obj in string form and then convert it in obj and store it in original array
+// here we are pushing already saved information in local array if it exist
 let objStr = localStorage.getItem('users');
 if (objStr) {
     usersArray = JSON.parse(objStr);
 }
-
+// it displayes if the info if it exists
 DisplayInfo();
 
 
+// if checks if edit id is not null then it updates the selected todo else add a new user
+// 
     addBtn.onclick=()=>{
         const name = searchBtn.value;
         if(edit_id!=null){
@@ -25,7 +27,7 @@ DisplayInfo();
             // insert
             usersArray.push({'name':name});
         }
-  
+  // save new input ane empty the search bar
   SaveInfo(usersArray);
   searchBtn.value = ''
  
